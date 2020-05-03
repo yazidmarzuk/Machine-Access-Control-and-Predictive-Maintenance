@@ -1,0 +1,22 @@
+#include<SoftwareSerial.h>
+SoftwareSerial SUART(4, 5); //SRX=Dpin-D2; STX-DPin-D1
+//-------------------------
+
+//--------------------------------------------
+
+void setup()
+{
+  Serial.begin(9600); //enable Serial Monitor
+  SUART.begin(9600); //enable SUART Port
+
+}
+
+void loop()
+{
+  byte n = SUART.available(); //n != 0 means a character has arrived
+  if (n != 0)
+  {
+    char x = SUART.read();  //read character
+    Serial.print(x);        //show character on Serial Monitor
+  }
+}
